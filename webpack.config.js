@@ -37,16 +37,22 @@ module.exports = {
     ],
   },
 
-  plugins: [new RefreshWebpackPlugin(), new HtmlWebpackPlugin()],
+  plugins: [
+    new RefreshWebpackPlugin(),
+    // new HtmlWebpackPlugin({
+    //   template: path.join(__dirname + "/src", "index.html"),
+    // }),
+  ],
 
   output: {
     path: path.join(__dirname, "public"),
     filename: "app.js",
-    publicPath: "/public",
+    publicPath: "./",
   },
+
   devServer: {
-    devMiddleware: { publicPath: "/public" },
-    static: { directory: path.resolve(__dirname) },
+    devMiddleware: { publicPath: "/" },
+    static: { directory: path.resolve(__dirname, "public") },
     hot: true,
   },
 };
