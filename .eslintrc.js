@@ -8,16 +8,16 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
-    'airbnb/hooks',
-    'plugin:eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
+    // 'airbnb/hooks',
+    // 'plugin:eslint/recommended',
+    // 'plugin:react/recommended',
+    // 'plugin:prettier/rec/ommended',
+    // 'plugin:import/errors',
+    // 'plugin:import/warnings',
     // 'prettier/react',
   ],
   rules: {
-    'react/jsx-filename-extension': [1, { extensions: ['js', 'jsx'] }],
+    'react/jsx-filename-extension': [true, { extensions: ['js', 'jsx'] }],
     // 확장자로 js와 jsx 둘다 허용하도록 수정
     'arrow-parens': ['warn', 'as-needed'],
     // 화살표 함수의 파라미터가 하나일때 괄호 생략
@@ -27,7 +27,7 @@ module.exports = {
     // 콘솔을 쓰면 에러가 나던 규칙 해제
     'import/prefer-default-export': ['off'],
     // export const 문을 쓸때 에러를 내는 규칙 해제
-    'react-hooks/exhaustive-deps': ['warn'],
+    'react-hooks/exhaustive-deps': ['off'],
     // hooks의 의존성배열이 충분하지 않을때 강제로 의존성을 추가하는 규칙을 완화
     'react/jsx-props-no-spreading': ['warn'],
     // props spreading을 허용하지 않는 규칙 해제
@@ -35,6 +35,9 @@ module.exports = {
     // props의 타입체크를 처리하려면 prop-types보단 차라리 typescript를 사용하는게 낫다.
     'no-underscore-dangle': ['off'],
     // camelCase를 따르는게 좋긴 하지만 `_`를 어쩔수 없이 써야하는 상황을 위해(가령 백엔드가 mongoDB)
+    'linebreak-style': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    // .js 파일에서 jsx 문법 사용에러 off
   },
 };
 // {
