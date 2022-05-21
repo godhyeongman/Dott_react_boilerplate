@@ -43,17 +43,17 @@ module.exports = {
       React: 'react',
     }),
     // new HtmlWebpackPlugin({
-    //   template: './src/index.html',
+    //   template: './public/index.html',
     // }),
   ],
   output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'app.js',
-    publicPath: '/',
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
   devServer: {
-    // devMiddleware: { publicPath: '/' }, // devMiddleware의 publicPath는  빌드된 파일 넣는곳
+    // devMiddleware: { publicPath: 'public' }, // devMiddleware의 publicPath는  빌드된 파일 넣는곳
+    historyApiFallback: true,
+
     static: { directory: path.resolve(__dirname, 'public') }, // static은 빌드되기 전 파일이 있는 곳
-    hot: true,
   },
 };
