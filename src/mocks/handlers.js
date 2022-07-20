@@ -1,8 +1,15 @@
-import { rest } from "msw";
+import { rest } from 'msw';
 
 export const handlers = [
-  // Handles a POST /login request
-  rest.post("/login", null),
-  // Handles a GET /user request
-  rest.get("/user", null),
+  rest.get(`/ok`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.delay(2000),
+      ctx.json({
+        result_code: 200,
+        result_message: 'OK',
+        result_body: 'ok',
+      }),
+    );
+  }),
 ];
