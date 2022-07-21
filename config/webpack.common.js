@@ -1,7 +1,12 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const childProcess = require('child_process');
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+const removeNewLine = lines => lines.toString().replace('\n', '');
 module.exports = {
   name: 'Dott-react-boilerplate',
   entry: { app: path.join(__dirname, '..', 'src', 'index.tsx') },
@@ -39,7 +44,10 @@ module.exports = {
             ['@babel/preset-react', { runtime: 'automatic' }],
             '@babel/preset-typescript',
           ],
-          plugins: ['babel-plugin-styled-components'],
+          plugins: [
+            'babel-plugin-styled-components',
+            isDevelopment && require.resolve('react-refresh/babel'),
+          ].filter(Boolean),
         },
       },
       {
@@ -59,5 +67,20 @@ module.exports = {
       base: '/',
     }),
     new Dotenv(),
+    new CleanWebpackPlugin(),
+    new webpack.BannerPlugin({
+      banner: `
+      Build Date :: ${new Date().toLocaleString()}
+      Commit Version :: ${removeNewLine(
+        childProcess.execSync('git rev-parse --short HEAD'),
+      )}
+      Auth.name :: ${removeNewLine(
+        childProcess.execSync('git config user.name'),
+      )}
+      Auth.email :: ${removeNewLine(
+        childProcess.execSync('git config user.email'),
+      )}
+      `,
+    }),
   ],
 };
