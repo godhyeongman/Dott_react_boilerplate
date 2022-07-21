@@ -39,7 +39,33 @@
     "no-use-before-define": "off",
     "consistent-return": "off",
     "@typescript-eslint/no-var-requires": "off",
-    "react/function-component-definition": "off"
+    "react/function-component-definition": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "sibling",
+          "parent",
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@",
+            "group": "internal",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["internal"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always"
+      }
+    ]
   },
   "settings": {
     "import/parsers": {
