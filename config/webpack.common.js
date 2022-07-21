@@ -7,6 +7,7 @@ const childProcess = require('child_process');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 const removeNewLine = lines => lines.toString().replace('\n', '');
+
 module.exports = {
   name: 'Dott-react-boilerplate',
   entry: { app: path.join(__dirname, '..', 'src', 'index.tsx') },
@@ -68,6 +69,7 @@ module.exports = {
     }),
     new Dotenv(),
     new CleanWebpackPlugin(),
+    // BannerPlugin 빌드시 상단에 빌드 시점 빌드한사람 정보 주석으로 기입
     new webpack.BannerPlugin({
       banner: `
       Build Date :: ${new Date().toLocaleString()}
